@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['test.py', '–onefile'],
+    ['test.py'],
     pathex=[],
     binaries=[],
     datas=[],
