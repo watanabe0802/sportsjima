@@ -88,7 +88,7 @@ class Screen1(tk.Frame):
         self.txt4.insert(tk.END, "【定価】\n"+str(math.ceil(int(text3)))+"\n")
         self.txt4.insert(tk.END, "【楽天・ヤフー】\n"+str(math.ceil(int(text3)*0.8+800))+"\n")
         self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(int(text3)*0.8))+"\n")
-        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil(int(text3)*0.63))+"\n")
+        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((int(text3)/1.1)*0.63))+"\n")
 
     def insert_text2(self):
         # ScrolledTextウィジェット内にテキストを挿入
