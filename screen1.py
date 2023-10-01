@@ -13,7 +13,7 @@ class Screen1(tk.Frame):
         self.master.title("Screen 1")
         self.pack(fill=tk.BOTH, expand=1)
 
-        self.button0 = tk.Button(self, text="設定", command=self.go_to_setting)
+        self.button0 = tk.Button(self, text="戻る", command=self.go_to_home)
         self.button1 = tk.Button(self, text="上下セット用", command=self.go_to_screen2)
         
 
@@ -102,8 +102,8 @@ class Screen1(tk.Frame):
         self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(int(text3)*0.85+263))+"\n")
         self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((int(text3)/1.1)*0.63))+"\n")
 
-    def go_to_setting(self):
-        self.master.switch_frame("setting.Setting")
+    def go_to_home(self):
+        self.master.switch_frame("home.Home")
 
     def go_to_screen2(self):
         self.master.switch_frame("screen2.Screen2")       

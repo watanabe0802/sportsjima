@@ -7,10 +7,10 @@ from setting import Setting
 class Application(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("400x400")
+        self.geometry("800x600")
         self.title("Application")
         self._frame = None
-        self.switch_frame("screen1.Screen1")
+        self.switch_frame("home.Home")
 
     def switch_frame(self, frame_name):
         new_frame = self.create_frame(frame_name)
