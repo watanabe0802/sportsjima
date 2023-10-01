@@ -1,7 +1,10 @@
 import tkinter as tk
 from screen1 import Screen1
 from screen2 import Screen2
+from screen3 import Screen3
 from setting import Setting
+from home import Home
+
 
 
 class Application(tk.Tk):
