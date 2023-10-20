@@ -81,11 +81,11 @@ class Screen3(tk.Frame):
         self.txt_goods_information.grid(row = 2, column = 3 )
         #生成結果
         self.lbl_generate_html.grid(row = 4, column = 0 )
-        self.txt_generate_html.grid(row = 4, column = 1 ,columnspan = 3 )
+        self.txt_generate_html.grid(row = 4, column = 1 ,columnspan = 3, pady=20 )
 
         #生成ボタン
-        self.generate_button.grid(row = 5, column = 1, columnspan = 3)
-        self.back_button.grid(row = 6, column = 1, columnspan = 3)
+        self.generate_button.grid(row = 5, column = 2,sticky=tkinter.NSEW)
+        self.back_button.grid(row = 6, column = 2,sticky=tkinter.NSEW)
 
 
 

@@ -2,6 +2,7 @@ import tkinter as tk
 from screen1 import Screen1
 from screen2 import Screen2
 from screen3 import Screen3
+from screen4 import Screen4
 from setting import Setting
 from home import Home
 
@@ -10,12 +11,18 @@ from home import Home
 class Application(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("800x600")
         self.title("Application")
         self._frame = None
         self.switch_frame("home.Home")
 
     def switch_frame(self, frame_name):
+        if frame_name == "screen1.Screen1" or frame_name =="screen2.Screen2":
+            self.geometry("400x400")
+        elif frame_name == "screen4.Screen4":
+            self.geometry("850x500")
+        else:
+            self.geometry("800x600")
+
         new_frame = self.create_frame(frame_name)
         if self._frame is not None:
             self._frame.destroy()
