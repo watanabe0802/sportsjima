@@ -114,14 +114,14 @@ class Screen4(tk.Frame):
             self.txt_generate_URL.insert(tk.END, '''<img SRC="https://image.rakuten.co.jp/sportsjima/cabinet/'''+self.var1+"/"+self.line+"-728-"+str(num)+'''.jpg" width="100%" /><br><br>'''+"\n")
 
         self.txt_generate_size.insert(tk.END, '''<img SRC="https://image.rakuten.co.jp/sportsjima/cabinet/'''+self.var1+"/"+self.line+'''-size.gif" width="100%" /><br><br>'''+"\n")
-        self.txt_generate_evidence.insert(tk.END, '''"<img SRC="https://image.rakuten.co.jp/sportsjima/cabinet/'''+self.var2+"/"+self.line+'''-evidence.gif" width="100%" /><br><br>'''+"\n")
+        self.txt_generate_evidence.insert(tk.END, '''"<p><img SRC="https://image.rakuten.co.jp/sportsjima/cabinet/'''+self.var2+"/"+self.line+'''-evidence.gif" border="0" /></p><br>'''+"\n")
 
     def insert_text2(self):
         for num in range(1,int(self.line2)+1):
             self.txt_generate_URL.insert(tk.END, '''<img SRC="https://shopping.c.yimg.jp/lib/sportsjima/'''+self.line+"-728-"+str(num)+'''.jpg" width="100%" /><br><br>'''+"\n")
 
         self.txt_generate_size.insert(tk.END, '''<img SRC="https://shopping.c.yimg.jp/lib/sportsjima/'''+self.line+'''-size.gif" width="100%" /><br><br>'''+"\n")
-        self.txt_generate_evidence.insert(tk.END, '''"<img SRC="https://shopping.c.yimg.jp/lib/sportsjima/'''+self.line+'''-evidence.jpg" width="100%" /><br><br>'''+"\n")
+        self.txt_generate_evidence.insert(tk.END, '''https://shopping.c.yimg.jp/lib/sportsjima/'''+self.line+'''-evidence.gif'''+"\n")
 
     def insert_text3(self):
         for num in range(1,int(self.line2)+1):
