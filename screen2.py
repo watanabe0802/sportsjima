@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter
 from tkinter.scrolledtext import ScrolledText
 import math
+import configparser
 
 class Screen2(tk.Frame):
     def __init__(self, master=None):
@@ -15,6 +16,17 @@ class Screen2(tk.Frame):
 
         self.button0 = tk.Button(self, text="戻る", command=self.go_to_screen1)
 
+        config_ini = configparser.ConfigParser()
+        config_ini.read('config.ini', encoding='utf-8')
+        self.var1 = config_ini['DEFAULT']['yamato_kake']
+        self.var2 = config_ini['DEFAULT']['yamato_price']
+        self.var3 = config_ini['DEFAULT']['yupake_kake']
+        self.var4 = config_ini['DEFAULT']['yupake_price']
+        self.var5 = config_ini['DEFAULT']['yupack_kake']
+        self.var6 = config_ini['DEFAULT']['yupack_price']
+        self.var7 = config_ini['DEFAULT']['tax']
+        self.var8 = config_ini['DEFAULT']['genkaritu']
+
 
         self.radio_value = tk.IntVar()
         self.radio0 = tk.Radiobutton(self,
@@ -26,6 +38,11 @@ class Screen2(tk.Frame):
             text = "ゆうパケット",      # ラジオボタンの表示名
             variable = self.radio_value, # 選択の状態を設定する
             value = 1                    # ラジオボタンに割り付ける値の設定
+        )
+        self.radio2 = tk.Radiobutton(self,
+            text = "ゆうパック",      # ラジオボタンの表示名
+            variable = self.radio_value, # 選択の状態を設定する
+            value = 2                   # ラジオボタンに割り付ける値の設定
         )
 
         self.lbl3 = tkinter.Label(self,text='価格')
@@ -54,6 +71,7 @@ class Screen2(tk.Frame):
 
         self.radio0.grid(row = 2, column = 3, sticky="w")
         self.radio1.grid(row = 2, column = 4, sticky="w")
+        self.radio1.grid(row = 2, column = 5, sticky="w")
 
         self.lbl3.grid(row = 2, column = 1, rowspan = 2)
         self.txt3.grid(row = 2, column = 2)
@@ -72,32 +90,46 @@ class Screen2(tk.Frame):
 
         if self.radio_value.get()==0:
             self.insert_text1()
-        else:
+        elif self.radio_value.get()==1:
             self.insert_text2()
+        else:
+            self.insert_text3()
 
     def insert_text1(self):
         # ScrolledTextウィジェット内にテキストを挿入
         if self.radio_value1.get()==0:
             text3 = int(self.txt3.get())+int(self.txt3a.get())
         else:
-            text3 = int(int(self.txt3.get())+int(self.txt3a.get()))*1.1
+            text3 = int(int(self.txt3.get())+int(self.txt3a.get()))*float(self.var7)
 
-        self.txt4.insert(tk.END, "【定価】\n"+str(math.ceil(int(text3)))+"\n")
-        self.txt4.insert(tk.END, "【楽天・ヤフー】\n"+str(math.ceil(int(text3)*0.8+800))+"\n")
-        self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(int(text3)*0.8))+"\n")
-        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((int(text3)/1.1)*0.63))+"\n")
+        self.txt4.insert(tk.END, "【定価】\n"+str(math.ceil(float(text3)))+"\n")
+        self.txt4.insert(tk.END, "【楽天・ヤフー】\n"+str(math.ceil(float(text3)*float(self.var1)+float(self.var2)))+"\n")
+        self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(float(text3)*float(self.var1)))+"\n")
+        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((float(text3)/float(self.var7))*float(self.var8)))+"\n")
 
     def insert_text2(self):
         # ScrolledTextウィジェット内にテキストを挿入
         if self.radio_value1.get()==0:
             text3 = int(self.txt3.get())+int(self.txt3a.get())
         else:
-            text3 = int(int(self.txt3.get())+int(self.txt3a.get()))*1.1
+            text3 = int(int(self.txt3.get())+int(self.txt3a.get()))*float(self.var7)
 
-        self.txt4.insert(tk.END, "【定価】\n"+str(math.ceil(int(text3)))+"\n")
-        self.txt4.insert(tk.END, "【楽天・ヤフー】\n"+str(math.ceil(int(text3)*0.85+263))+"\n")
-        self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(int(text3)*0.85+263))+"\n")
-        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((int(text3)/1.1)*0.63))+"\n")
+        self.txt4.insert(tk.END, "【定価】\n"+str(math.ceil(float(text3)))+"\n")
+        self.txt4.insert(tk.END, "【楽天・ヤフー】\n"+str(math.ceil(float(text3)*float(self.var3)+float(self.var4)))+"\n")
+        self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(float(text3)*float(self.var3)+float(self.var4)))+"\n")
+        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((float(text3)/float(self.var7))*float(self.var8)))+"\n")
+
+    def insert_text3(self):
+        # ScrolledTextウィジェット内にテキストを挿入
+        if self.radio_value1.get()==0:
+            text3 = int(self.txt3.get())+int(self.txt3a.get())
+        else:
+            text3 = int(int(self.txt3.get())+int(self.txt3a.get()))*float(self.var7)
+
+        self.txt4.insert(tk.END, "【定価】\n"+str(math.ceil(float(text3)))+"\n")
+        self.txt4.insert(tk.END, "【楽天・ヤフー】\n"+str(math.ceil(float(text3)*float(self.var5)+float(self.var6)))+"\n")
+        self.txt4.insert(tk.END, "【wauma】\n"+str(math.ceil(float(text3)*float(self.var5)))+"\n")
+        self.txt4.insert(tk.END, "【原価】\n"+str(math.ceil((float(text3)/float(self.var7))*float(self.var8)))+"\n")
 
     def go_to_screen1(self):
         self.master.switch_frame("screen1.Screen1")

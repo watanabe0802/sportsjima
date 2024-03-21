@@ -17,9 +17,11 @@ class Application(tk.Tk):
 
     def switch_frame(self, frame_name):
         if frame_name == "screen1.Screen1" or frame_name =="screen2.Screen2":
-            self.geometry("400x400")
+            self.geometry("450x400")
         elif frame_name == "screen4.Screen4":
             self.geometry("850x500")
+        elif frame_name == "setting.Setting":
+            self.geometry("500x400")
         else:
             self.geometry("800x600")
 
